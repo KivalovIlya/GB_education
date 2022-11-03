@@ -1,0 +1,98 @@
+#1a
+
+ilya@ilyavb:~$ sudo adduser new_user
+Adding user `new_user' ...
+Adding new group `new_user' (1001) ...
+Adding new user `new_user' (1001) with group `new_user' ...
+Creating home directory `/home/new_user' ...
+Copying files from `/etc/skel' ...
+New password: 
+Retype new password: 
+passwd: password updated successfully
+Changing the user information for new_user
+Enter the new value, or press ENTER for the default
+	Full Name []: Kivalov Ilya
+	Room Number []: 5
+	Work Phone []: 8-800-555-35-35
+	Home Phone []: 999-26
+	Other []: hello geekbrains
+Is the information correct? [Y/n] Y
+
+#1b [вывод с файлов немного подчистил, чтобы громоздко не было]
+
+ilya@ilyavb:~$ sudo tail /etc/passwd
+vboxadd:x:998:1::/var/run/vboxadd:/bin/false
+sshd:x:127:65534::/run/sshd:/usr/sbin/nologin
+new_user:x:1001:1001:Kivalov Ilya,5,8-800-555-35-35,999-26,hello geekbrains:/home/new_user:/bin/bash
+
+ilya@ilyavb:~$ sudo tail /etc/shadow
+ilya:$6$XYcRb.QlcmClEZNf$jvYvow5mlWAST7PDnMKlhCHcAVe7Ff82iKMiis0.JOexjQ19JHqGfCbtrcx8favwH5YQC7Ajy2r/x2Fe/C3zE1:19001:0:99999:7:::
+vboxadd:!:19001::::::
+new_user:$6$ltdEJcZb5i6.Sjxl$zFcD7hD3e5KbmpQAmKGlFCIY35oT1SoYITKsX/BATBuv5qmjQQzaRJ.y/1qH6TssuHXhmunHvPS281YId6Aql.:19009:0:99999:7:::
+
+#1c
+
+ilya@ilyavb:~$ sudo userdel -fr new_user
+userdel: new_user mail spool (/var/mail/new_user) not found
+
+ilya@ilyavb:~$ sudo tail /etc/passwd
+sssd:x:126:131:SSSD system user,,,:/var/lib/sss:/usr/sbin/nologin
+ilya:x:1000:1000:ilya,,,:/home/ilya:/bin/bash
+vboxadd:x:998:1::/var/run/vboxadd:/bin/false
+sshd:x:127:65534::/run/sshd:/usr/sbin/nologin
+
+#2a
+
+ilya@ilyavb:~$ sudo addgroup pshhhhh
+Adding group `pshhhhh' (GID 1003) ...
+Done.
+
+#2b-c
+
+ilya@ilyavb:~$ sudo usermod -G pshhhhh coca-cola
+ilya@ilyavb:~$ groups coca-cola
+coca-cola : coca-cola pshhhhh
+ilya@ilyavb:~$ sudo usermod -G sudo coca-cola
+ilya@ilyavb:~$ su coca-cola
+Password: 
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+coca-cola@ilyavb:/home/ilya$ sudo tail /etc/shadow
+ilya:$6$XYcRb.QlcmClEZNf$jvYvow5mlWAST7PDnMKlhCHcAVe7Ff82iKMiis0.JOexjQ19JHqGfCbtrcx8favwH5YQC7Ajy2r/x2Fe/C3zE1:19001:0:99999:7:::
+vboxadd:!:19001::::::
+sshd:*:19001:0:99999:7:::
+coca-cola:$6$ieSa/lp0BDCqJMXY$DGPPY7D5DMQqaizf8WIRStL6P3mGSrmrfZVoM6Tkmb7/nDIKCMpZHRFPJsSFd2mPbqb7thb91d7VWjdO06Oyi/:19009:0:99999:7:::
+
+#2d
+
+coca-cola@ilyavb:/home/ilya$ sudo deluser coca-cola sudo
+Removing user `coca-cola' from group `sudo' ...
+Done.
+coca-cola@ilyavb:/home/ilya$ groups coca-cola
+coca-cola : coca-cola
+
+#3
+
+ilya@ilyavb:~$ sudo usermod -G sudo coca-cola
+ilya@ilyavb:~$ su coca-cola
+Password: 
+coca-cola@ilyavb:/home/ilya$ sudo apt update
+Hit:1 http://ru.archive.ubuntu.com/ubuntu focal InRelease
+Hit:2 http://ru.archive.ubuntu.com/ubuntu focal-updates InRelease              
+Hit:3 http://ru.archive.ubuntu.com/ubuntu focal-backports InRelease            
+Hit:4 http://archive.canonical.com/ubuntu focal InRelease                      
+Get:5 http://security.ubuntu.com/ubuntu focal-security InRelease [114 kB]
+Get:6 http://security.ubuntu.com/ubuntu focal-security/main amd64 DEP-11 Metadata [38,3 kB]
+Get:7 http://security.ubuntu.com/ubuntu focal-security/universe amd64 DEP-11 Metadata [66,1 kB]
+Get:8 http://security.ubuntu.com/ubuntu focal-security/multiverse amd64 DEP-11 Metadata [2 464 B]
+Fetched 221 kB in 1s (236 kB/s)                                         
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+All packages are up to date.
+coca-cola@ilyavb:/home/ilya$ 
+
+
+
+

@@ -1,0 +1,147 @@
+#1
+
+ilya@ilyavb:~$ echo hello > file1
+ilya@ilyavb:~$ cp file1 file2
+ilya@ilyavb:~$ ln -s file1 file3
+ilya@ilyavb:~$ ln file1 file4
+ilya@ilyavb:~$ ll -i
+394114 -rw-rw-r--  2 ilya ilya    6 янв 24 00:32  file1
+394115 -rw-rw-r--  1 ilya ilya    6 янв 24 00:32  file2
+394133 lrwxrwxrwx  1 ilya ilya    5 янв 24 00:32  file3 -> file1
+394114 -rw-rw-r--  2 ilya ilya    6 янв 24 00:32  file4
+ilya@ilyavb:~$ rm file1
+ilya@ilyavb:~$ cat file2
+hello
+ilya@ilyavb:~$ cat file3
+cat: file3: Нет такого файла или каталога
+ilya@ilyavb:~$ cat file4
+hello
+
+#2
+
+ilya@ilyavb:~$ echo hello > test
+ilya@ilyavb:~$ ln test hard
+ilya@ilyavb:~$ ln -s test soft
+ilya@ilyavb:~$ mkdir new_d
+ilya@ilyavb:~$ mv hard new_d
+ilya@ilyavb:~$ mv soft new_d
+ilya@ilyavb:~$ cd new_d/
+ilya@ilyavb:~/new_d$ cat hard
+hello
+ilya@ilyavb:~/new_d$ cat soft
+cat: soft: Нет такого файла или каталога
+ilya@ilyavb:~/new_d$ ls -l
+итого 4
+-rw-rw-r-- 2 ilya ilya 6 янв 24 00:22 hard
+lrwxrwxrwx 1 ilya ilya 4 янв 24 00:22 soft -> test
+ilya@ilyavb:~/new_d$
+
+#3
+
+ilya@ilyavb:~$ echo hello > file1
+ilya@ilyavb:~$ echo world > file2
+ilya@ilyavb:~$ ls -l
+-rw-rw-r-- 1 ilya ilya    6 янв 24 01:02  file1
+-rw-rw-r-- 1 ilya ilya    6 янв 24 01:02  file2
+ilya@ilyavb:~$ chmod g-rw file2
+ilya@ilyavb:~$ chmod o-r file2
+ilya@ilyavb:~$ ls -l
+итого 40
+-rw-rw-r-- 1 ilya ilya    6 янв 24 01:02  file1
+-rw------- 1 ilya ilya    6 янв 24 01:02  file2
+
+#4
+
+ilya@ilyavb:/home$ sudo adduser anton
+Добавляется пользователь «anton» ...
+Добавляется новая группа «anton» (1001) ...
+Добавляется новый пользователь «anton» (1001) в группу «anton» ...
+Создаётся домашний каталог «/home/anton» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль : 
+НЕУДАЧНЫЙ ПАРОЛЬ: Пароль должен содержать не менее 8 символов
+Повторите ввод нового пароля : 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе anton
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: 
+	Номер комнаты []: 
+	Рабочий телефон []: 
+	Домашний телефон []: 
+	Другое []: 
+Данная информация корректна? [Y/n] Y
+ilya@ilyavb:/home$ sudo adduser sasha
+Добавляется пользователь «sasha» ...
+Добавляется новая группа «sasha» (1002) ...
+Добавляется новый пользователь «sasha» (1002) в группу «sasha» ...
+Создаётся домашний каталог «/home/sasha» ...
+Копирование файлов из «/etc/skel» ...
+Новый пароль : 
+НЕУДАЧНЫЙ ПАРОЛЬ: Пароль должен содержать не менее 8 символов
+Повторите ввод нового пароля : 
+passwd: пароль успешно обновлён
+Изменение информации о пользователе sasha
+Введите новое значение или нажмите ENTER для выбора значения по умолчанию
+	Полное имя []: 
+	Номер комнаты []: 
+	Рабочий телефон []: 
+	Домашний телефон []: 
+	Другое []: 
+Данная информация корректна? [Y/n] Y
+ilya@ilyavb:/home$ sudo addgroup developer
+Добавляется группа «developer» (GID 1003) ...
+Готово.
+ilya@ilyavb:/home$ sudo usermod -a -G developer anton
+ilya@ilyavb:/home$ sudo usermod -a -G developer sasha
+ilya@ilyavb:/home$ groups anton
+anton : anton developer
+ilya@ilyavb:/home$ sudo mkdir work
+ilya@ilyavb:/home$ ls -l
+итого 16
+drwxr-x---  2 anton anton 4096 янв 24 20:15 anton
+drwxr-x--- 13 ilya  ilya  4096 янв 24 19:50 ilya
+drwxr-x---  2 sasha sasha 4096 янв 24 20:15 sasha
+drwxr-xr-x  2 root  root  4096 янв 24 20:18 work
+ilya@ilyavb:/home$ sudo chown :developer work
+ilya@ilyavb:/home$ sudo chmod o-rx,g+w,g+s work
+ilya@ilyavb:/home$ ls -l
+итого 16
+drwxr-x---  2 anton anton     4096 янв 24 20:15 anton
+drwxr-x--- 13 ilya  ilya      4096 янв 24 19:50 ilya
+drwxr-x---  2 sasha sasha     4096 янв 24 20:15 sasha
+drwxrws---  2 root  developer 4096 янв 24 20:18 work
+ilya@ilyavb:/home$ su anton
+Пароль: 
+anton@ilyavb:/home$ cd work
+anton@ilyavb:/home/work$ echo hello > file1
+anton@ilyavb:/home/work$ ls -l
+итого 4
+-rw-rw-r-- 1 anton developer 6 янв 24 20:23 file1
+anton@ilyavb:/home/work$ su sasha
+Пароль: 
+sasha@ilyavb:/home/work$ echo world >> file1
+sasha@ilyavb:/home/work$ cat file1
+hello
+world
+sasha@ilyavb:/home/work$ 
+
+#6
+
+ilya@ilyavb:~$ mkdir direct
+ilya@ilyavb:~$ echo hello > direct/file1
+ilya@ilyavb:~$ echo world > direct/file2
+ilya@ilyavb:~$ ls -l
+drwxrwxr-x 2 ilya ilya 4096 янв 24 19:39  direct
+ilya@ilyavb:~$ sudo chmod a-r direct
+ilya@ilyavb:~$ ls -l
+d-wx-wx--x 2 ilya ilya 4096 янв 24 19:39  direct
+ilya@ilyavb:~$ ls direct/
+ls: невозможно открыть каталог 'direct/': Отказано в доступе
+ilya@ilyavb:~$ cat direct/file1
+hello
+ilya@ilyavb:~$ cat direct/file2
+world
+ilya@ilyavb:~$ cd direct
+ilya@ilyavb:~/direct$ ls
+ls: невозможно открыть каталог '.': Отказано в доступе
+ilya@ilyavb:~/direct$ 

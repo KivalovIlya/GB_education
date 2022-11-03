@@ -1,0 +1,2 @@
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysqldump -u root -p employees employees --where="emp_no<10101" > D:\dump_100_rows.sql
+Enter password: ********

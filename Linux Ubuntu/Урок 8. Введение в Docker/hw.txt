@@ -1,0 +1,160 @@
+#1 Установил pureOS в VintualBox
+
+ilia@iliavb:~$ uname -a
+Linux iliavb 5.10.0-11-amd64 #1 SMP Debian 5.10.92-1 (2022-01-18) x86_64 GNU/Linux
+
+#2
+
+ilia@iliavb:~$ sudo apt install docker.io
+[sudo] пароль для ilia: 
+Обновлено 0 пакетов, установлено 16 новых пакетов, для удаления отмечено 0 пакетов, и 11 пакетов не обновлено.
+Необходимо скачать 68,7 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 308 MB.
+Хотите продолжить? [Д/н] Y
+Получено 68,7 MB за 15с (4 487 kB/s)                                                                        
+Настраивается пакет runc (1.0.0~rc93+ds1-5) …
+Настраивается пакет liberror-perl (0.17029-1) …
+Настраивается пакет libmodule-find-perl (0.15-1) …
+Настраивается пакет tini (0.19.0-1) …
+Настраивается пакет libproc-processtable-perl (0.59-2+b1) …
+Настраивается пакет libintl-perl (1.26-3) …
+Настраивается пакет git-man (1:2.30.2-1) …
+Настраивается пакет cgroupfs-mount (1.4) …
+Настраивается пакет libterm-readkey-perl (2.38-1+b2) …
+Настраивается пакет containerd (1.4.12~ds1-1~deb11u1) …
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /lib/systemd/system/containe
+rd.service.
+Настраивается пакет libsort-naturally-perl (1.03-2) …
+Настраивается пакет libmodule-scandeps-perl (1.30-1) …
+Настраивается пакет needrestart (3.5-4) …
+Настраивается пакет docker.io (20.10.5+dfsg1-1+deb11u1) …
+Добавляется группа «docker» (GID 133) ...
+Готово.
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /lib/systemd/system/docker.socket.
+Настраивается пакет libintl-xs-perl (1.26-3) …
+Настраивается пакет git (1:2.30.2-1) …
+Обрабатываются триггеры для man-db (2.9.4-2) …
+
+ilia@iliavb:~$ sudo apt install docker
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Будут установлены следующие дополнительные пакеты:
+  wmdocker
+Следующие НОВЫЕ пакеты будут установлены:
+  docker wmdocker
+Обновлено 0 пакетов, установлено 2 новых пакетов, для удаления отмечено 0 пакетов, и 11 пакетов не обновлено.
+Необходимо скачать 15,3 kB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 58,4 kB.
+Хотите продолжить? [Д/н] Y
+Пол:1 https://repo.pureos.net/pureos byzantium/main amd64 wmdocker amd64 1.5-2 [12,8 kB]
+Пол:2 https://repo.pureos.net/pureos byzantium/main amd64 docker all 1.5-2 [2 556 B]
+Получено 15,3 kB за 1с (28,4 kB/s)     
+Выбор ранее не выбранного пакета wmdocker.
+(Чтение базы данных … на данный момент установлено 144972 файла и каталога.)
+Подготовка к распаковке …/wmdocker_1.5-2_amd64.deb …
+Распаковывается wmdocker (1.5-2) …
+Выбор ранее не выбранного пакета docker.
+Подготовка к распаковке …/archives/docker_1.5-2_all.deb …
+Распаковывается docker (1.5-2) …
+Настраивается пакет wmdocker (1.5-2) …
+Настраивается пакет docker (1.5-2) …
+Обрабатываются триггеры для man-db (2.9.4-2) …
+нсах пользователей нет устаревших процессов.
+ilia@iliavb:~$ 
+
+#3
+
+ilia@iliavb:~$ sudo docker search ubuntu
+
+NAME                                                      DESCRIPTION                                     STARS     OFFICIAL   AUTOMATED
+
+ubuntu                                                    Ubuntu is a Debian-based Linux operating sys…   13693     [OK]       
+dorowu/ubuntu-desktop-lxde-vnc                            Docker image to provide HTML5 VNC interface …   606                  [OK]
+websphere-liberty                                         WebSphere Liberty multi-architecture images …   283       [OK]       
+rastasheep/ubuntu-sshd                                    Dockerized SSH service, built on top of offi…   256                  [OK]
+consol/ubuntu-xfce-vnc                                    Ubuntu container with "headless" VNC session…   244                  [OK]
+ubuntu-upstart                                            DEPRECATED, as is Upstart (find other proces…   112       [OK]       
+ansible/ubuntu14.04-ansible                               Ubuntu 14.04 LTS with ansible                   98                   [OK]
+danielguerra/ubuntu-xrdp                                  Fully implemented Multi User xrdp with xorgx…   63                   [OK]
+1and1internet/ubuntu-16-nginx-php-phpmyadmin-mysql-5      ubuntu-16-nginx-php-phpmyadmin-mysql-5          50                   [OK]
+ubuntu-debootstrap                                        DEPRECATED; use "ubuntu" instead                45        [OK]       
+i386/ubuntu                                               Ubuntu is a Debian-based Linux operating sys…   28                   
+nuagebec/ubuntu                                           Simple always updated Ubuntu docker images w…   24                   [OK]
+fnndsc/ubuntu-python3                                     A slim Ubuntu-based Python3 image               24                   [OK]
+solita/ubuntu-systemd                                     Ubuntu + systemd                                24                   [OK]
+1and1internet/ubuntu-16-apache-php-5.6                    ubuntu-16-apache-php-5.6                        14                   [OK]
+1and1internet/ubuntu-16-apache-php-7.0                    ubuntu-16-apache-php-7.0                        13                   [OK]
+1and1internet/ubuntu-16-nginx-php-phpmyadmin-mariadb-10   ubuntu-16-nginx-php-phpmyadmin-mariadb-10       11                   [OK]
+1and1internet/ubuntu-16-nginx-php-5.6-wordpress-4         ubuntu-16-nginx-php-5.6-wordpress-4             9                    [OK]
+1and1internet/ubuntu-16-nginx-php-5.6                     ubuntu-16-nginx-php-5.6                         8                    [OK]
+1and1internet/ubuntu-16-apache-php-7.1                    ubuntu-16-apache-php-7.1                        7                    [OK]
+1and1internet/ubuntu-16-nginx-php-7.0                     ubuntu-16-nginx-php-7.0                         4                    [OK]
+1and1internet/ubuntu-16-nginx                             ubuntu-16-nginx                                 3                    [OK]
+smartentry/ubuntu                                         ubuntu with smartentry                          1                    [OK]
+1and1internet/ubuntu-16-php-7.1                           ubuntu-16-php-7.1                               1                    [OK]
+1and1internet/ubuntu-16-rspec                             ubuntu-16-rspec                                 0                    [OK]
+
+
+ilia@iliavb:~$ sudo docker run ubuntu
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+08c01a0ec47e: Pull complete 
+Digest: sha256:669e010b58baf5beb2836b253c1fd5768333f0d1dbcb834f7c07a4dc93f474be
+Status: Downloaded newer image for ubuntu:latest
+ilia@iliavb:~$ sudo docker run ubuntu
+ilia@iliavb:~$ sudo docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED          STATUS                      PORTS     NAMES
+c91d408e02d5   ubuntu        "bash"     4 seconds ago    Exited (0) 3 seconds ago              romantic_murdock
+
+#4
+
+ilia@iliavb:~$ echo > Dockerfile
+ilia@iliavb:~$ ls
+ Dockerfile   Видео   Документы   Загрузки   Изображения   Музыка   Общедоступные  'Рабочий стол'   Шаблоны
+ilia@iliavb:~$ nano Dockerfile
+ilia@iliavb:~$ cat Dockerfile 
+FROM ubuntu:latest
+MAINTAINER kivalov_ilya
+RUN apt-get update
+RUN apt-get install nginx -y
+RUN apt-get install php-fpm -y
+VOLUME "/var/www/html"
+EXPOSE 80
+CMD /usr/sbin/nginx -g "daemon off;"
+ilia@iliavb:~$ sudo docker build -t kivalov_ilya .
+Sending build context to Docker daemon  33.42MB
+Step 1/8 : FROM ubuntu:latest
+ ---> 54c9d81cbb44
+Step 2/8 : MAINTAINER kivalov_ilya
+ ---> Running in e4252bf3185c
+Removing intermediate container e4252bf3185c
+ ---> 99c15b8f4cf2
+Step 3/8 : RUN apt-get update
+ ---> Running in cbd221bb6770
+
+ 		......
+
+Step 6/8 : VOLUME "/var/www/html"
+ ---> Running in cc8469d23172
+Removing intermediate container cc8469d23172
+ ---> 198b684eef21
+Step 7/8 : EXPOSE 80
+ ---> Running in 5b6a80b8b9e9
+Removing intermediate container 5b6a80b8b9e9
+ ---> 5a3aae2c9863
+Step 8/8 : CMD /usr/sbin/nginx -g "daemon off;"
+ ---> Running in 83420af25882
+Removing intermediate container 83420af25882
+ ---> 6913fe2635d0
+Successfully built 6913fe2635d0
+Successfully tagged kivalov_ilya:latest
+ilia@iliavb:~$ sudo docker run -d kivalov_ilya
+df068258e7922e6b4726c7e002b63b110f1f60ad7af2c60ad51ac2510b0ddeb8
+ilia@iliavb:~$ sudo docker ps
+CONTAINER ID   IMAGE          COMMAND                  CREATED         STATUS         PORTS     NAMES
+df068258e792   kivalov_ilya   "/bin/sh -c '/usr/sb…"   8 seconds ago   Up 7 seconds   80/tcp    adoring_euclid
+ilia@iliavb:~$ 
+
+

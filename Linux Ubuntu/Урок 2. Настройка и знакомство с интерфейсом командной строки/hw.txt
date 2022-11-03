@@ -1,0 +1,93 @@
+[TASK 1-6]
+
+ilya@ilyavb:~$ mkdir students mentors
+ilya@ilyavb:~$ cd students
+ilya@ilyavb:~/students$ touch students_list.txt
+ilya@ilyavb:~/students$ nano students_list.txt
+ilya@ilyavb:~/students$ cd ..
+ilya@ilyavb:~$ cd mentors
+ilya@ilyavb:~/mentors$ touch mentors_list.txt
+ilya@ilyavb:~/mentors$ nano mentors_list.txt
+ilya@ilyavb:~/mentors$ mv mentors_list.txt ~/students/
+ilya@ilyavb:~/mentors$ cd ..
+ilya@ilyavb:~$ rm -r mentors
+ilya@ilyavb:~$ mv students students_and_mentors
+ilya@ilyavb:~$ rm -r students_and_mentors/
+
+[SSH CONNECT]
+
+ilya@ilyavb:~$ sudo systemctl enable ssh
+Synchronizing state of ssh.service with SysV service script with /lib/systemd/systemd-sysv-install.
+Executing: /lib/systemd/systemd-sysv-install enable ssh
+ilya@ilyavb:~$ sudo systemctl start ssh
+ilya@ilyavb:~$ sudo systemctl status ssh
+● ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: e>
+     Active: active (running) since Sat 2022-01-01 03:46:52 +04; 1h 3min ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 732 (sshd)
+      Tasks: 1 (limit: 2299)
+     Memory: 2.5M
+     CGroup: /system.slice/ssh.service
+             └─732 sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups
+
+[win10 cmd]
+
+C:\Users\BSPB>ssh ilya@----------
+ilya@----------'s password:
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-43-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Sat Jan  1 04:26:48 2022 from 192.168.3.3
+ilya@ilyavb:~$
+
+[TASK *8, powershell]
+
+PS C:\Users\BSPB> ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (C:\Users\BSPB/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\BSPB/.ssh/id_rsa.
+Your public key has been saved in C:\Users\BSPB/.ssh/id_rsa.pub.
+The key fingerprint is:
+SHA256:---------- bspb@LAPTOP-JE029LD2
+The key's randomart image is:
++---[RSA 3072]----+
+|    oo.          |
+|   . o.  .       |
+|    . + o .      |
+|     = B +      .|
+|    . = S .    ..|
+| E   . =   .  o o|
+|  .   o o . o..+.|
+|   .  o+ . o **=o|
+|   .o=+.o  .++O*+|
++----[SHA256]-----+
+PS C:\Users\BSPB> type $env:USERPROFILE\.ssh\id_rsa.pub | ssh ilya@---------- "cat >> .ssh/authorized_keys"
+ilya@----------'s password:
+PS C:\Users\BSPB> ssh ilya@----------
+Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.11.0-43-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+0 updates can be applied immediately.
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+Last login: Sat Jan  1 04:54:40 2022 from ----------
+ilya@ilyavb:~$

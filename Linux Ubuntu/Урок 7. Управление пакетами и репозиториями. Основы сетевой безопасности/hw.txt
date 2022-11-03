@@ -1,0 +1,97 @@
+#1
+
+ilya@ilya-vb:~$ sudo apt-add-repository ppa:nginx/stable
+[sudo] пароль для ilya: 
+Репозиторий: 'deb http://ppa.launchpad.net/nginx/stable/ubuntu/ impish main'
+Описание:
+This PPA contains the latest Stable Release version of the nginx web server software.
+**Only Non-End-of-Life Ubuntu Releases are supported in this PPA**
+**Development releases of Ubuntu are not officially supported by this PPA, and uploads for those will not be available until actual final releases for those versions**
+Дополнительные сведения: https://launchpad.net/~nginx/+archive/ubuntu/stable
+Добавление репозитория.
+Press [ENTER] to continue or Ctrl-c to cancel.
+Adding deb entry to /etc/apt/sources.list.d/nginx-ubuntu-stable-impish.list
+Adding disabled deb-src entry to /etc/apt/sources.list.d/nginx-ubuntu-stable-impish.list
+Adding key to /etc/apt/trusted.gpg.d/nginx-ubuntu-stable.gpg with fingerprint 8B3981E7A6852F782CC4951600A6F0A3C300EE8C
+Сущ:1 http://ru.archive.ubuntu.com/ubuntu impish InRelease
+Пол:2 http://ru.archive.ubuntu.com/ubuntu impish-updates InRelease [110 kB]                                                                                        
+Пол:3 http://security.ubuntu.com/ubuntu impish-security InRelease [110 kB]                                                                                         
+Игн:4 http://ppa.launchpad.net/nginx/stable/ubuntu impish InRelease                                                
+Пол:5 http://ru.archive.ubuntu.com/ubuntu impish-backports InRelease [101 kB]                               
+Ошб:6 http://ppa.launchpad.net/nginx/stable/ubuntu impish Release                                                              
+  404  Not Found [IP: 91.189.95.85 80]
+Пол:7 http://ru.archive.ubuntu.com/ubuntu impish-updates/main i386 Packages [120 kB]
+Пол:8 http://ru.archive.ubuntu.com/ubuntu impish-updates/main amd64 Packages [257 kB]
+Пол:9 http://ru.archive.ubuntu.com/ubuntu impish-updates/main amd64 DEP-11 Metadata [25,5 kB]
+Пол:10 http://ru.archive.ubuntu.com/ubuntu impish-updates/main amd64 c-n-f Metadata [4 304 B]
+Пол:11 http://ru.archive.ubuntu.com/ubuntu impish-updates/universe amd64 Packages [89,5 kB]
+Пол:12 http://ru.archive.ubuntu.com/ubuntu impish-updates/universe i386 Packages [53,3 kB]
+Пол:13 http://ru.archive.ubuntu.com/ubuntu impish-updates/universe amd64 DEP-11 Metadata [21,7 kB]
+Пол:14 http://ru.archive.ubuntu.com/ubuntu impish-updates/universe amd64 c-n-f Metadata [3 412 B]
+Пол:15 http://ru.archive.ubuntu.com/ubuntu impish-backports/universe amd64 DEP-11 Metadata [9 092 B]
+Пол:16 http://security.ubuntu.com/ubuntu impish-security/main amd64 Packages [177 kB]
+Пол:17 http://security.ubuntu.com/ubuntu impish-security/main i386 Packages [62,1 kB]
+Пол:18 http://security.ubuntu.com/ubuntu impish-security/main amd64 DEP-11 Metadata [11,7 kB]
+Пол:19 http://security.ubuntu.com/ubuntu impish-security/main amd64 c-n-f Metadata [2 752 B]
+Пол:20 http://security.ubuntu.com/ubuntu impish-security/universe i386 Packages [39,6 kB]
+Пол:21 http://security.ubuntu.com/ubuntu impish-security/universe amd64 Packages [54,3 kB]
+Пол:22 http://security.ubuntu.com/ubuntu impish-security/universe amd64 DEP-11 Metadata [2 608 B]
+Пол:23 http://security.ubuntu.com/ubuntu impish-security/universe amd64 c-n-f Metadata [2 580 B]
+Чтение списков пакетов… Готово                                             
+E: Репозиторий «http://ppa.launchpad.net/nginx/stable/ubuntu impish Release» не содержит файла Release.
+N: Обновление из этого репозитория нельзя выполнить безопасным способом, поэтому по умолчанию он отключён.
+N: Информацию о создании репозитория и настройках пользователя смотрите в справочной странице apt-secure(8).
+ilya@ilya-vb:~$ cd /etc/apt/sources.list.d/
+ilya@ilya-vb:/etc/apt/sources.list.d$ ls
+nginx-ubuntu-stable-impish.list
+ilya@ilya-vb:/etc/apt/sources.list.d$ cat nginx-ubuntu-stable-impish.list 
+deb http://ppa.launchpad.net/nginx/stable/ubuntu/ impish main
+# deb-src http://ppa.launchpad.net/nginx/stable/ubuntu/ impish main
+ilya@ilya-vb:~$ sudo dpkg -P nginx
+(Чтение базы данных … на данный момент установлено 187585 файлов и каталогов.)
+Удаляется nginx (1.18.0-6ubuntu11) …
+ilya@ilya-vb:~$ 
+
+#2
+
+ilya@ilya-vb:~$ snap find spotify
+Название       Версия                Издатель                Примечание  Описание
+spotify        1.1.77.643.g3c4c6fc6  spotify✓                -           Music for everyone
+spotify-qt     v3.8                  kraxarn                 -           Lightweight Spotify client using Qt
+spotifyd       0.2.3                 simonpersson            -           A spotify daemon
+spt-temp       v0.15.0-7-g3501ca9    spotify-tui             -           Spotify TUI
+tizonia        0.22.0                tizonia                 -           Cloud music from the Linux terminal
+musixmatch     3.6.1                 musixmatch              -           Musixmatch Desktop App
+magnesium      1.6.40                robblue2x               -           magnesium music player
+spt            0.25.0                popey                   -           Spotify TUI
+calaboka       1.2.0                 goodsoftworx            -           Ad silencer for Spotify
+spot           0.1.15                popey                   -           Gtk/Rust native Spotify client for the GNOME desktop.
+vsslagent      1.18                  vssl                    -           VSSL REST api.
+psst-gui       e6e3cfa               morrisong               -           Unofficial Spotify client with a fast native GUI
+music-radar    0+git.d12ccb7         keshavnrj               -           Music Recognition app for Linux Desktop
+violin-player  3.1.1                 foxish-mess             -           A fast, lightweight, and minimalistic desktop music player.
+olivia         1.1                   keshavnrj               -           Elegant Cloud Music Player for Linux Desktop
+iheartradio    1.4.0                 itzswirlz               -           Electron webapp for iHeartRadio
+lyricfier      0.4                   emilio-astarita         -           Lyrics search for Spotify app
+gemini         4.4.1                 kyleawayan              -           Gemini
+ncspot         0.9.5                 popey                   -           Cross-platform ncurses Spotify client written in Rust
+musik          0+git.1369097         open-webdesign-germany  -           MusiK
+librespot-dev  0+git.c38e977         keshavnrj               -           a headless Spotify Connect receiver
+ilya@ilya-vb:~$ sudo snap install spotify
+spotify 1.1.77.643.g3c4c6fc6 от Spotify✓ установлен
+ilya@ilya-vb:~$ 
+
+#3
+
+ilya@ilya-vb:~$ sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+[sudo] пароль для ilia:
+ilya@ilya-vb:~$ sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+ilya@ilya-vb:~$ sudo iptables-save
+# Generated by iptables-save v1.8.4 on Mon Feb  7 02:15:56 2022
+*filter
+:INPUT ACCEPT [0:0]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [0:0]
+-A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 82 -j ACCEPT
+# Completed on Mon Feb  7 02:15:56 2022

@@ -1,0 +1,32 @@
+CREATE TABLE calls (
+	id_call SERIAL PRIMARY KEY,
+	id_user BIGINT UNSIGNED NOT NULL,
+	id_operator BIGINT UNSIGNED NOT NULL,
+	call_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (id_user) REFERENCES users (id),
+	FOREIGN KEY (id_operator) REFERENCES users (id)
+);
+
+
+CREATE TABLE education (
+	id SERIAL PRIMARY KEY,
+	user_id BIGINT UNSIGNED NOT NULL,
+	name_university VARCHAR(255),
+	faculty VARCHAR(255),
+	special VARCHAR(255),
+	form_study VARCHAR(50),
+	status VARCHAR(50),
+	FOREIGN KEY (user_id) REFERENCES users (id)
+);
+
+
+
+CREATE TABLE news (
+	id SERIAL PRIMARY KEY,
+	id_communities BIGINT UNSIGNED NOT NULL,
+	text_news TEXT,
+	id_media BIGINT UNSIGNED NOT NULL,
+	time_create DATETIME DEFAULT CURRENT_TIMESTAMP,
+	FOREIGN KEY (id_communities) REFERENCES communities (id),
+	FOREIGN KEY (id_media) REFERENCES media (id)
+);

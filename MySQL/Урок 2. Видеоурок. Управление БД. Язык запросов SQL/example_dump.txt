@@ -1,0 +1,40 @@
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysqldump -u root -p example > D:\example_dump.sql
+Enter password: ********
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: ********
+mysql> create database sample
+    -> ;
+Query OK, 1 row affected (0.01 sec)
+mysql> use sample;
+Database changed
+mysql> exit
+Bye
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p sample < D:\example_dump.sql
+Enter password: ********
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u root -p
+Enter password: ********
+mysql> use sample;
+Database changed
+mysql> show tables
+    -> ;
++------------------+
+| Tables_in_sample |
++------------------+
+| users            |
++------------------+
+1 row in set (0.00 sec)
+
+mysql> select * from users;
++------+--------+
+| id   | u_name |
++------+--------+
+|    1 | Anton  |
+|    2 | Ilya   |
++------+--------+
+2 rows in set (0.00 sec)
+
+mysql> exit
+Bye

@@ -1,0 +1,83 @@
+#1
+
+ilya@ilyavb:~$ ls
+ Видео       Загрузки      Музыка         'Рабочий стол'
+ Документы   Изображения   Общедоступные   Шаблоны
+ilya@ilyavb:~$ echo > hello.txt
+ilya@ilyavb:~$ ls
+ hello.txt   Документы   Изображения   Общедоступные   Шаблоны
+ Видео       Загрузки    Музыка       'Рабочий стол'
+ilya@ilyavb:~$ cat /etc/* 1>all_content_files.txt 2>error.txt
+ilya@ilyavb:~$ tail all_content_files.txt
+# installation of packages available from the repository
+if [[ -x /usr/lib/command-not-found ]] ; then
+   if (( ! ${+functions[command_not_found_handler]} )) ; then
+      function command_not_found_handler {
+         [[ -x /usr/lib/command-not-found ]] || return 1
+         /usr/lib/command-not-found -- ${1+"$1"} && :
+      }
+   fi
+fi
+ilya@ilyavb:~$ tail error.txt
+cat: /etc/update-notifier: Это каталог
+cat: /etc/UPower: Это каталог
+cat: /etc/usb_modeswitch.d: Это каталог
+cat: /etc/vim: Это каталог
+cat: /etc/vmware-tools: Это каталог
+cat: /etc/vulkan: Это каталог
+cat: /etc/wpa_supplicant: Это каталог
+cat: /etc/X11: Это каталог
+cat: /etc/xdg: Это каталог
+cat: /etc/xml: Это каталог
+ilya@ilyavb:~$ 
+
+#2
+
+ilya@ilyavb:~$ ls -ls /etc/ | cut -c 4-13 | sort | uniq
+drwxr-s---
+drwxr-xr-x
+lrwxrwxrwx
+-r--r-----
+-r--r--r--
+-rw-r-----
+-rw-r--r--
+-rw-rw-r--
+�ого 11
+
+#3
+
+ilya@ilyavb:/etc/ssh$ ps -A | grep sshd
+   1817 ?        00:00:00 sshd
+ilya@ilyavb:/etc/ssh$ sudo nano /etc/ssh/sshd_config
+ilya@ilyavb:/etc/ssh$ systemctl restart sshd
+ilya@ilyavb:/etc/ssh$ ps -A | grep sshd
+   1891 ?        00:00:00 sshd
+ilya@ilyavb:/etc/ssh$ sudo nano /etc/ssh/sshd_config
+ilya@ilyavb:/etc/ssh$ systemctl reload sshd
+ilya@ilyavb:/etc/ssh$ ps -A | grep sshd
+   1891 ?        00:00:00 sshd
+[PID процесса не изменяется при reload, то есть процесс не заново включается,
+а грубо говоря начинает работать по обновленной конфигурации]
+ilya@ilyavb:~$ cat > python.py
+print('hello world')
+ilya@ilyavb:~$ ls
+ python.py   Документы   Изображения   Общедоступные   Шаблоны
+ Видео       Загрузки    Музыка       'Рабочий стол'
+[какой сигнал посылается при ctrl-d не знаю, в методичке данная комбинация
+в описании сигналов не указана. В интернете узнал, что, цитирую:
+
+"Нажатие Ctrl + D говорит терминалу, что надо зарегистрировать так называемый EOF
+ (end of file – конец файла), то есть поток ввода окончен. 
+ Bash интерпретирует это как желание выйти из программы." 
+]
+
+#4
+
+ilya@ilyavb:~$ mc
+ilya@ilyavb:~$ ps -A | grep mc
+   2156 ?        00:00:00 ibus-memconf
+   5335 pts/1    00:00:00 mc
+ilya@ilyavb:~$ kill -n 9 5335
+ilya@ilyavb:~$ ps -A | grep mc
+   2156 ?        00:00:00 ibus-memconf
+

@@ -1,0 +1,9 @@
+ilya@ilyavb:~$ uname --all
+Linux ilyavb 5.11.0-43-generic #47~20.04.2-Ubuntu SMP Mon Dec 13 11:06:56 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+ilya@ilyavb:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Ubuntu
+Description:	Ubuntu 20.04.3 LTS
+Release:	20.04
+Codename:	focal
+ilya@ilyavb:~$ 
